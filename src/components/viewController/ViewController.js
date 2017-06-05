@@ -4,11 +4,11 @@ import BooksList from '../booksList/BooksList';
 class ViewController extends Component {
     
     render() {
-        var selectedBook = this.props.books.filter((book) => { book.isbn === this.props.selected });
+        const selectedBook = this.props.books.filter((book) => { book.isbn === this.props.selected });
 
         return (
             <div>
-                { (this.props.selected === null) && <BooksList/> }
+                { (this.props.selected === null) && <BooksList books={this.props.books}/> }
                 { (this.props.selected !== null) && <BookDetail book={selectedBook}/> }
             </div>
         );
