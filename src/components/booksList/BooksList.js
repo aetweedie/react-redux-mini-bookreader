@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
+import BookItem from '../bookItem/BookItem';
 
 class BooksList extends Component {
 
   render() {
     return (
       <div>
-        {this.props.books.map(book => {
-          return <BookItem bookTitle={book.title}/>;
-        })}
+        {
+          this.props.books.map(book => {
+            return <BookItem book={book} onClickBookItem={this.props.onClickBookItem}/>;
+          })
+        }
       </div>
     )
   }
-  
+
 }
