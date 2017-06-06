@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import BooksList from '../booksList/BooksList';
 import BookDetails from '../bookDetails/BookDetails';
-import {updateSelectedBook,clearSelectedBook} from '../../actions/books';
+import {updateSelectedBook,clearSelectedBook,decrementPageNumber,incrementPageNumber} from '../../actions/books';
 
 class ViewController extends Component {
     
@@ -12,7 +12,7 @@ class ViewController extends Component {
         return (
             <div>
                 { (this.props.selected === null) && <BooksList books={this.props.books} onClickBookItem={this.props.onClickBookItem}/> }
-                { (this.props.selected !== null) && <BookDetails book={selectedBook} onClickBack={this.props.onClickBack}/> }
+                { (this.props.selected !== null) && <BookDetails book={selectedBook} onClickBack={this.props.onClickBack} decrementPageNumber={this.props.decrementPageNumber} incrementPageNumber={this.props.incrementPageNumber}/> }
             </div>
         );
     }
@@ -27,7 +27,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     onClickBookItem: updateSelectedBook,
-    onClickBack: clearSelectedBook
+    onClickBack: clearSelectedBook,
+    decrementPageNumber: decrementPageNumber,
+    incrementPageNumber: incrementPageNumber
 }
 
 const ViewControllerContainer = connect(mapStateToProps,mapDispatchToProps)(ViewController);

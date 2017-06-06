@@ -12,10 +12,16 @@ export function clearSelectedBook() {
   }
 }
 
-export function updatePageNumber(isbn,pageNumber) {
+export function decrementPageNumber(isbn) {
   return {
-    type: 'UPDATE_PAGE_NUMBER',
-    isbn,
-    pageNumber
+    type: 'DECREMENT_PAGE_NUMBER',
+    isbn
+  }
+}
+
+export function incrementPageNumber(isbn) {
+  return {
+    type: 'INCREMENT_PAGE_NUMBER',
+    isbn
   }
 }

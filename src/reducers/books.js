@@ -7,13 +7,13 @@ const initialState = {
       title: 'Javascript Design Patterns',
       author: 'Addy Osmani',
       isbn: 12345,
-      pageNumber: null
+      pageNumber: 1
     },
     {
       title: 'Non-Violent Communication',
-      author: 'I forget',
+      author: 'Marshall Rosenberg',
       isbn: 67890,
-      pageNumber: null
+      pageNumber: 1
     }
   ]
 }
@@ -28,14 +28,24 @@ export default function booksListApp(state = initialState, action) {
       return Object.assign({}, state, {
         selected: null
       });
-    case 'UPDATE_PAGE_NUMBER':
-      return state.books.map((book) => {
+    case 'DECREMENT_PAGE_NUMBER':
+      const decrementState = _.cloneDeep(state);
+      decrementState.books = decrementState.books.map((book) => {
         if (book.isbn === action.isbn) {
-          return Object.assign({}, book, {
-            pageNumber: action.pageNumber
-          });
+          book.pageNumber--;
         }
+        return book;
       });
+      return decrementState;
+    case 'INCREMENT_PAGE_NUMBER':
+      const incrementState = _.cloneDeep(state);
+      incrementState.books = incrementState.books.map((book) => {
+        if (book.isbn === action.isbn) {
+          book.pageNumber++;
+        }
+        return book;
+      });
+      return incrementState;
     default: 
       return state;
   }
