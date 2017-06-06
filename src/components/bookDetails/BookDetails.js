@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 
-class BookItem extends Component {
-  
+class BookDetails extends Component {
   render() {
     return (
-      <div onClick={() => this.props.onClickBookItem(this.props.book.isbn)}>
+      <div>
         <h1>{this.props.book.title}</h1>
         <p>{this.props.book.author}</p>
+        <p>{this.props.book.isbn}</p>
       </div>
     )
   }
 }
 
-export default BookItem;
+export default BookDetails;

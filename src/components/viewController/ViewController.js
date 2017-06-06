@@ -7,7 +7,7 @@ import {updateSelectedBook,clearSelectedBook} from '../../actions/books';
 class ViewController extends Component {
     
     render() {
-        const selectedBook = this.props.books.filter((book) => { book.isbn === this.props.selected });
+        const selectedBook = this.props.books.filter((book) => book.isbn === this.props.selected )[0];
 
         return (
             <div>
@@ -18,14 +18,14 @@ class ViewController extends Component {
     }
 }
 
-mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         books: state.books,
         selected: state.selected
     }    
 }
 
-mapDispatchToProps = {
+const mapDispatchToProps = {
     onClickBookItem: updateSelectedBook,
     onClickBack: clearSelectedBook
 }
