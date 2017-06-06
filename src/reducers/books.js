@@ -24,6 +24,10 @@ export default function booksListApp(state = initialState, action) {
       return Object.assign({}, state, {
         selected: action.isbn
       });
+    case 'CLEAR_SELECTED_BOOK':
+      return Object.assign({}, state, {
+        selected: null
+      });
     case 'UPDATE_PAGE_NUMBER':
       return state.books.map((book) => {
         if (book.isbn === action.isbn) {
