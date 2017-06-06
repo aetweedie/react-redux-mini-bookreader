@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import BooksList from '../booksList/BooksList';
+import BookDetails from '../bookDetails/BookDetails';
+import {updateSelectedBook,clearSelectedBook} from '../../actions/books';
 
 class ViewController extends Component {
     
@@ -8,11 +11,25 @@ class ViewController extends Component {
 
         return (
             <div>
-                { (this.props.selected === null) && <BooksList books={this.props.books}/> }
-                { (this.props.selected !== null) && <BookDetail book={selectedBook}/> }
+                { (this.props.selected === null) && <BooksList books={this.props.books} onClickBookItem={this.props.onClickBookItem}/> }
+                { (this.props.selected !== null) && <BookDetails book={selectedBook} onClickBack={this.props.onClickBack}/> }
             </div>
         );
     }
 }
 
-export default ViewController;
+mapStateToProps = (state) => {
+    return {
+        books: state.books,
+        selected: state.selected
+    }    
+}
+
+mapDispatchToProps = {
+    onClickBookItem: updateSelectedBook,
+    onClickBack: clearSelectedBook
+}
+
+const ViewControllerContainer = connect(mapStateToProps,mapDispatchToProps)(ViewController);
+
+export default ViewControllerContainer;
