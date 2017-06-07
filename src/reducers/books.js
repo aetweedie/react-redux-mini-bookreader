@@ -34,7 +34,7 @@ export default function booksListApp(state = initialState, action) {
     case 'DECREMENT_PAGE_NUMBER':
       const decrementState = _.cloneDeep(state);
       decrementState.books = decrementState.books.map((book) => {
-        if (book.isbn === action.isbn) {
+        if ((book.isbn === action.isbn) && (book.pageNumber > 1)) {
           book.pageNumber--;
         }
         return book;
