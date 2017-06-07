@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import BooksList from '../booksList/BooksList';
 import BookDetails from '../bookDetails/BookDetails';
-import {updateSelectedBook,clearSelectedBook,decrementPageNumber,incrementPageNumber} from '../../actions/books';
+import {updateSelectedBook,
+        clearSelectedBook,
+        decrementPageNumber,
+        incrementPageNumber} from '../../actions/books';
 
 class ViewController extends Component {
 
@@ -30,7 +33,7 @@ class ViewController extends Component {
       </div>
     );     
   }
-  
+
 }
 
 const mapStateToProps = (state) => {
