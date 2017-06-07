@@ -5,16 +5,29 @@ import BookDetails from '../bookDetails/BookDetails';
 import {updateSelectedBook,clearSelectedBook,decrementPageNumber,incrementPageNumber} from '../../actions/books';
 
 class ViewController extends Component {
+    getListOrDetails(selectedBook) {
+        if (selectedBook) {
+            return (<BookDetails 
+                    book={selectedBook} 
+                    clearSelectedBook={this.props.clearSelectedBook} 
+                    decrementPageNumber={this.props.decrementPageNumber} 
+                    incrementPageNumber={this.props.incrementPageNumber}
+                />);
+        } else {
+            return (<BooksList 
+                        books={this.props.books} 
+                        updateSelectedBook={this.props.updateSelectedBook}
+                   />);
+        }
+    }
     
     render() {
-        const selectedBook = this.props.books.filter((book) => book.isbn === this.props.selected )[0];
-
+        const selectedBook = this.props.books.filter((book) => book.isbn === this.props.selected)[0];
         return (
             <div>
-                { (this.props.selected === null) && <BooksList books={this.props.books} updateSelectedBook={this.props.updateSelectedBook}/> }
-                { (this.props.selected !== null) && <BookDetails book={selectedBook} clearSelectedBook={this.props.clearSelectedBook} decrementPageNumber={this.props.decrementPageNumber} incrementPageNumber={this.props.incrementPageNumber}/> }
+                {this.getListOrDetails(selectedBook)}
             </div>
-        );
+        );     
     }
 }
 
