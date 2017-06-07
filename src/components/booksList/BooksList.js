@@ -8,7 +8,7 @@ class BooksList extends Component {
       <div>
         {
           this.props.books.map(book => {
-            return <BookItem book={book} onClickBookItem={this.props.onClickBookItem}/>;
+            return <BookItem book={book} updateSelectedBook={this.props.updateSelectedBook}/>;
           })
         }
       </div>

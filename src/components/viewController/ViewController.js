@@ -11,8 +11,8 @@ class ViewController extends Component {
 
         return (
             <div>
-                { (this.props.selected === null) && <BooksList books={this.props.books} onClickBookItem={this.props.onClickBookItem}/> }
-                { (this.props.selected !== null) && <BookDetails book={selectedBook} onClickBack={this.props.onClickBack} decrementPageNumber={this.props.decrementPageNumber} incrementPageNumber={this.props.incrementPageNumber}/> }
+                { (this.props.selected === null) && <BooksList books={this.props.books} updateSelectedBook={this.props.updateSelectedBook}/> }
+                { (this.props.selected !== null) && <BookDetails book={selectedBook} clearSelectedBook={this.props.clearSelectedBook} decrementPageNumber={this.props.decrementPageNumber} incrementPageNumber={this.props.incrementPageNumber}/> }
             </div>
         );
     }
@@ -26,8 +26,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    onClickBookItem: updateSelectedBook,
-    onClickBack: clearSelectedBook,
+    updateSelectedBook: updateSelectedBook,
+    clearSelectedBook: clearSelectedBook,
     decrementPageNumber: decrementPageNumber,
     incrementPageNumber: incrementPageNumber
 }
