@@ -1,0 +1,7 @@
+.book-item {
+  padding: 10px;
+}
+
+.book-item:hover {
+  background: lightsalmon;
+}

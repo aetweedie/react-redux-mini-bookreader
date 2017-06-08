@@ -6,13 +6,19 @@ const initialState = {
     {
       title: 'Javascript Design Patterns',
       author: 'Addy Osmani',
-      isbn: 12345,
+      isbn: 9781449331818,
       pageNumber: 1
     },
     {
       title: 'Non-Violent Communication',
       author: 'Marshall Rosenberg',
-      isbn: 67890,
+      isbn: 9781306096669,
+      pageNumber: 1
+    },
+    {
+      title: 'Eloquent Javascript',
+      author: 'Marijn Haverbeke',
+      isbn: 9781593275846,
       pageNumber: 1
     }
   ]

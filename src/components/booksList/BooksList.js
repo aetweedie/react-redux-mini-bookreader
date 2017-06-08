@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import BookItem from '../bookItem/BookItem';
+import './booksList.css';
 
 class BooksList extends Component {
 
   render() {
     return (
-      <div>
+      <div className='books-list-container'>
         {
           this.props.books.map(book => {
-            return <BookItem book={book} updateSelectedBook={this.props.updateSelectedBook}/>;
+            return <BookItem key={book.isbn} book={book} updateSelectedBook={this.props.updateSelectedBook}/>;
           })
         }
       </div>

@@ -6,6 +6,7 @@ import {updateSelectedBook,
         clearSelectedBook,
         decrementPageNumber,
         incrementPageNumber} from '../../actions/books';
+import './ViewController.css';
 
 class ViewController extends Component {
 
@@ -28,8 +29,11 @@ class ViewController extends Component {
   render() {
     const selectedBook = this.props.books.filter((book) => book.isbn === this.props.selected)[0];
     return (
-      <div>
-        {this.getListOrDetails(selectedBook)}
+      <div className='view-controller-container'>
+        <h1>mini-bookreader</h1>
+        <div className='view-controller-container-inner'>
+          {this.getListOrDetails(selectedBook)}
+        </div>
       </div>
     );     
   }
